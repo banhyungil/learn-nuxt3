@@ -1,12 +1,30 @@
 <template>
-  <q-card class="my-card">
-    <q-card-section>
-      <div class="text-h6 ellipsis">Nuxt3 기본편</div>
-      <div class="text-subtitle2 ellipsis text-grey-8">
-        Nuxt 3 전체적인 스펙을 살펴봅시다.
-      </div>
+  <q-card class="card">
+    <q-card-section v-if="$slots.header" class="card__header">
+      <slot name="header"></slot>
     </q-card-section>
+
+    <q-card-section class="card__body">
+      <slot></slot>
+    </q-card-section>
+
+    <q-separator />
+
+    <q-card-actions v-if="$slots.footer" class="card__footer">
+      <slot name="footer"></slot>
+    </q-card-actions>
   </q-card>
 </template>
-
 <script setup lang="ts"></script>
+
+<style scoped>
+.card__header {
+  padding: 32px 32px 0px 32px;
+}
+.card__body {
+  padding: 32px;
+}
+.card__footer {
+  padding: 16px 32px 16px 32px;
+}
+</style>
